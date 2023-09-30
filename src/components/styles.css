@@ -1,59 +1,111 @@
 /* Styles for the input container */
 .input {
-    display: flex;
-    width: 95%;
-    position: relative;
-    align-items: center;
+  display: flex;
+  width: 95%;
+  position: relative;
+  align-items: center;
 }
 
 /* Styles for the input box */
 .input__box {
-    width: 100%;
-    border-radius: 50px;
-    padding: 20px 30px;
-    font-size: 25px;
-    border: none;
-    transition: 0.2s;
-    box-shadow: inset 0 0 5px #2b2192; /* Adds inner shadow effect */
+  width: 100%;
+  border-radius: 50px;
+  padding: 20px 30px;
+  font-size: 25px;
+  border: none;
+  transition: 0.2s;
+  box-shadow: inset 0 0 5px #2b2192; /* Adds inner shadow effect */
 }
 
 /* Styles for the input box when it is focused */
 .input__box:focus {
-    box-shadow: 0 0 10px 1000px rgba(0, 0, 0, 0.4); /* Adds outer shadow effect when focused */
-    outline: none; /* Removes default focus outline */
+  box-shadow: 0 0 10px 1000px rgba(0, 0, 0, 0.4); /* Adds outer shadow effect when focused */
+  outline: none; /* Removes default focus outline */
 }
 
 /* Styles for the submit button */
 .input__submit {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    margin: 12px;
-    border-radius: 50px;
-    right: 0px;
-    border: none;
-    font-size: 15px;
-    background-color: #2f74c0;
-    color: white;
-    transition: 0.2s all;
-    box-shadow: 0 0 10px black; /* Adds shadow effect */
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin: 12px;
+  border-radius: 50px;
+  right: 0px;
+  border: none;
+  font-size: 15px;
+  background-color: #2f74c0;
+  color: white;
+  transition: 0.2s all;
+  box-shadow: 0 0 10px black; /* Adds shadow effect */
 }
 
 /* Styles for the submit button on hover */
 .input__submit:hover {
-    background-color: #388ae2; /* Changes background color on hover */
+  background-color: #388ae2; /* Changes background color on hover */
 }
 
 /* Styles for the submit button when clicked */
 .input__submit:active {
-    transform: scale(0.8); /* Scales down the button when clicked */
-    box-shadow: 0 0 5px black; /* Adds a smaller shadow effect */
+  transform: scale(0.8); /* Scales down the button when clicked */
+  box-shadow: 0 0 5px black; /* Adds a smaller shadow effect */
 }
 
 /* Styles for a container with class 'todos' */
 .todos {
-    display: flex;
-    justify-content: space-evenly;
-    width: 90%;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  flex-wrap: wrap;
 }
+
+/* Displays as a flex container. */
+.todos__single {
+    display: flex; 
+    width: 29.5%; /* Sets the width to 29.5% of its parent. */
+    border-radius: 5px; /* Applies a border-radius of 5px for rounded corners. */
+    padding: 20px; /* Adds 20px padding inside the container. */
+    margin-top: 15px; /* Sets a top margin of 15px. */
+    background-image: url("https://img.freepik.com/premium-photo/yellow-abstract-watercolor-background_868292-2261.jpg?w=900"); /* Applies a background image from a URL. */
+  }
+  
+  /* Uses flex to expand and fill available space. */
+  .todos__single--text {
+      flex: 1; 
+      padding: 5px; 
+      border: none; 
+      font-size: 20px; 
+  }
+  
+  /* Removes the default outline when the text is focused. */
+  .todos__single--text:focus {
+      outline: none; 
+  }
+  
+  /* Styling the icon */
+  .icon {
+      margin-left: 10px; 
+      font-size: 25px; 
+      cursor: pointer; 
+  }
+  
+  /* Adjusts width for smaller screens. */
+  @media (max-width: 1200px) {
+      .todos__single {
+          width: 40%; 
+      }
+  }
+  
+  @media (max-width: 700px) {
+      .input {
+          width: 95%; /* Adjusts width for smaller screens. */
+      }
+      
+      .todos {
+          width: 95%; /* Adjusts width for smaller screens. */
+      }
+  
+      .todos__single {
+          width: 100%; /* Adjusts width for smaller screens. */
+      }
+  }
+  
