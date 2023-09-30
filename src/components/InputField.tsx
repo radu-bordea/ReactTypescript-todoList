@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./styles.css";
 
 // Define the expected properties for the InputField component
@@ -10,10 +10,17 @@ interface Props {
 
 // InputField component
 const InputField: React.FC<Props> = ({ todo, setTodo, handleAdd }) => {
+  // Create a reference to the input element
+  const inputRef = useRef<HTMLInputElement>(null);
+
   return (
-    <form className="input" onSubmit={(e) => handleAdd(e)}>
+    <form className="input" onSubmit={(e) => {
+        handleAdd(e)
+        inputRef.current?.blur()
+      }}>
       {/* Input field */}
       <input
+        ref={inputRef}
         type="input"
         value={todo}
         onChange={(e) => setTodo(e.target.value)}

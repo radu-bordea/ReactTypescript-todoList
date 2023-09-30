@@ -49,3 +49,11 @@
     transform: scale(0.8); /* Scales down the button when clicked */
     box-shadow: 0 0 5px black; /* Adds a smaller shadow effect */
 }
+
+/* Styles for a container with class 'todos' */
+.todos {
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    flex-wrap: wrap;
+}

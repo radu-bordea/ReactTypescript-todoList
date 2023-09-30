@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import InputField from "./components/InputField";
 import { Todo } from "./model";
+import TodoList from "./components/TodoList";
 
 const App: React.FC = () => {
   const [todo, setTodo] = useState<string>(""); // State for the current todo item
@@ -23,10 +24,7 @@ const App: React.FC = () => {
     <div className="App">
       <span className="heading">Task List</span>
       <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
-      {/* Render the list of todos */}
-      {todos.map((t) => (
-        <li>{t.todo}</li>
-      ))}
+      <TodoList todos={todos} setTodos={setTodos}/>
     </div>
   );
 };
