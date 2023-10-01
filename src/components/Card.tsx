@@ -1,33 +1,47 @@
-import React from 'react'
-import { Todo } from '../model'
-import {AiFillEdit, AiFillDelete} from 'react-icons/ai'
-import {MdDone} from 'react-icons/md'
+import React from "react";
+import { Todo } from "../model";
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { MdDone } from "react-icons/md";
 
 type Props = {
-    todo: Todo, // The individual todo item to display.
-    todos:Todo[], // The list of all todo items.
-    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>; // Function to update the list of todo items.
-}
+  todo: Todo; // The individual todo item to display.
+  todos: Todo[]; // The list of all todo items.
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>; // Function to update the list of todo items.
+};
 
-const Card = ({todo, todos, setTodos}: Props) => {
+const Card = ({ todo, todos, setTodos }: Props) => {
+  const handleDone = (id: number) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
+      )
+    );
+  };
+
+  const handleDelete = (id: number) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   return (
-    <form className='todos__single'>
-        <span className='todos__single--text'>
-            {todo.todo} {/* Displays the text of the todo item. */}
+    <form className="todos__single">
+      {todo.isDone ? (
+        <s className="todos__single--text">{todo.todo} </s>
+      ) : (
+        <span className="todos__single--text">{todo.todo} </span>
+      )}
+      <div>
+        <span className="icon">
+          <AiFillEdit />
         </span>
-        <div>
-            <span className="icon">
-                <AiFillEdit/> {/* Icon for editing the todo item. */}
-            </span>
-            <span className="icon">
-                <AiFillDelete/> {/* Icon for deleting the todo item. */}
-            </span>
-            <span className="icon">
-                <MdDone/> {/* Icon for marking the todo item as done. */}
-            </span>
-        </div>
+        <span className="icon" onClick={() => handleDelete(todo.id)}>
+          <AiFillDelete />
+        </span>
+        <span className="icon" onClick={() => handleDone(todo.id)}>
+          <MdDone />
+        </span>
+      </div>
     </form>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;
