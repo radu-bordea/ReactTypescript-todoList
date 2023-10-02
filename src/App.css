@@ -1,31 +1,27 @@
-/* Importing a font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Neucha&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Neucha&display=swap");
 
-/* Styles for the main application container */
 .App {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: linear-gradient(135deg, #0e6372f5, #dff9fb); /* Background gradient */
-    font-family: "Neucha", cursive; /* Setting font family */
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2f74c0;
+  font-family: "Neucha", cursive;
 }
 
-/* Styles for the heading element */
 .heading {
-    text-transform: uppercase; /* Makes text uppercase */
-    font-size: 40px;
-    margin: 30px 0; /* Adds margin */
-    color: white; /* Sets text color */
-    z-index: 1; /* Sets z-index to control stacking order */
-    text-align: center; /* Centers text */
+  text-transform: uppercase;
+  font-size: 40px;
+  margin: 30px 0;
+  color: white;
+  z-index: 1;
+  text-align: center;
 }
 
-/* Media query for smaller screens */
 @media (max-width: 800px) {
-    .heading {
-        margin: 15px 0; /* Adjusts margin for smaller screens */
-        font-size: 35px; /* Adjusts font size for smaller screens */
-    }
+  .heading {
+    margin: 15px 0;
+    font-size: 35px;
+  }
 }

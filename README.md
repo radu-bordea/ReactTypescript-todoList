@@ -7,6 +7,8 @@ npx create-react-app ReactTypescript-todoList --template typescript
 
 // dependencies and libraries
 - npm install react-icons
+- npm i react-beautiful-dnd
+- npm i @types/react-beautiful-dnd
 
 // The user will be able to create new task and save, edit or delete them from a list
 
