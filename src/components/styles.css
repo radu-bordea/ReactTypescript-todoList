@@ -144,4 +144,10 @@
     width: 95%; /* Adjust width for smaller screens */
     margin-bottom: 10px; /* Margin from the bottom */
   }
+
+  .todos__single--text {
+    width: 70px;
+    font-size: 15px;
+  }
+
 }
