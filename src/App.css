@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #2f74c0;
+  background-image: linear-gradient(to right, lightblue, rgb(0, 221, 236),  rgb(255, 38, 0), red);
   font-family: "Neucha", cursive;
 }
 

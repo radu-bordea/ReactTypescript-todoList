@@ -1,24 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-
-// Importing InputField and TodoList components.
 import InputField from "./components/InputField";
 import TodoList from "./components/TodoList";
-
-// Importing DragDropContext and DropResult for drag-and-drop functionality.
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
-
-// Importing Todo type from external models.
 import { Todo } from "./models/models";
 
-// Defining the functional component named App.
 const App: React.FC = () => {
-  // State variables for todo input, active todos, and completed todos.
+  // State for the input field value, active todos, and completed todos.
   const [todo, setTodo] = useState<string>("");
   const [todos, setTodos] = useState<Array<Todo>>([]);
   const [CompletedTodos, setCompletedTodos] = useState<Array<Todo>>([]);
 
-  // Function to handle adding a new todo.
+  // Function to add a new todo when the form is submitted.
   const handleAdd = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -44,10 +37,9 @@ const App: React.FC = () => {
     }
 
     let add;
-    let active = todos;
-    let complete = CompletedTodos;
+    let active = [...todos]; // Create a copy to avoid mutating state directly
+    let complete = [...CompletedTodos]; // Create a copy to avoid mutating state directly
 
-    // Source Logic
     if (source.droppableId === "TodosList") {
       add = active[source.index];
       active.splice(source.index, 1);
@@ -56,7 +48,6 @@ const App: React.FC = () => {
       complete.splice(source.index, 1);
     }
 
-    // Destination Logic
     if (destination.droppableId === "TodosList") {
       active.splice(destination.index, 0, add);
     } else {
@@ -67,14 +58,28 @@ const App: React.FC = () => {
     setTodos(active);
   };
 
-  // Returning JSX for the App component.
+  // Load data from local storage on component mount.
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem("todos") || "[]");
+    const storedCompletedTodos = JSON.parse(
+      localStorage.getItem("completedTodos") || "[]"
+    );
+
+    setTodos(storedTodos);
+    setCompletedTodos(storedCompletedTodos);
+  }, []);
+
+  // Save data to local storage whenever todos or CompletedTodos change.
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+    localStorage.setItem("completedTodos", JSON.stringify(CompletedTodos));
+  }, [todos, CompletedTodos]);
+
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <div className="App">
-        <span className="heading">Taskify</span>
-        {/* Rendering InputField component with specific props */}
+        <span className="heading">To Do List</span>
         <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
-        {/* Rendering TodoList component with specific props */}
         <TodoList
           todos={todos}
           setTodos={setTodos}
@@ -86,5 +91,4 @@ const App: React.FC = () => {
   );
 };
 
-// Exporting the App component as the default export of this module.
 export default App;
